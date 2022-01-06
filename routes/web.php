@@ -17,7 +17,7 @@ use App\Http\Controllers\Backend\UploadImgController;
 use App\Http\Controllers\Backend\UserManagementController;
 use App\Http\Controllers\Backend\RoleManagementController;
 use App\Http\Controllers\Backend\SlideshowController;
-use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\QuotesController;
 
 /*

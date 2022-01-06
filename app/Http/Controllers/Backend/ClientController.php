@@ -21,13 +21,13 @@ class ClientController extends Controller
   public function uploadImage($params, $request)
   {
     $name = $params['name'];
-    $category = $params['catagory'];
+    $category = $params['category'];
     $folder = $params['folder'];
 
     if ($request->file($name)) {
       $originalName = $request->file($params['name'])->getClientOriginalName();
       $imageNew = time() . '-' . $originalName;
-      $path = 'storage/' . $category . '.' . $folder . '/' . $imageNew;
+      $path = 'storage/' . $category . '/' . $folder . '/' . $imageNew;
       $request->img->move(public_path('storage/' . '/' . $category . '/' . $folder), $imageNew);
       return $path;
     }
@@ -65,7 +65,7 @@ class ClientController extends Controller
     $validatedData['img'] = $this->uploadImage([
       'name' => 'img',
       'folder' => 'client',
-      'catagory' => 'images',
+      'category' => 'images',
     ], $request);
 
     Client::create($validatedData);
@@ -90,12 +90,12 @@ class ClientController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit(Client $client, $id)
+  public function edit($id)
   {
     $this->authorize('update', Client::class);
 
     return view('dashboard.conten_management.Home.client.edit', [
-      'data' => Client::firstWhere('id', $id),
+      'client' => Client::firstWhere('id', $id),
     ]);
   }
 
@@ -128,6 +128,7 @@ class ClientController extends Controller
     } else {
       $validatedData['img'] = $request->oldImg;
     }
+
 
     Client::where('id', $client->id)->update($validatedData);
 

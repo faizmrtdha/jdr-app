@@ -6,33 +6,35 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <h5>Client Profile Edit</h5>
+          <h5>Partner Create</h5>
         </div>
         <div class="card-body add-post">
-          <form action="/dashboard/home/client/{{ $client->id }}" method="post" class="row needs-validation"
+          <form action="/dashboard/home/partner" method="post" class="row needs-validation"
             enctype="multipart/form-data">
-            @method('PUT')
             @csrf
             <div class="col-sm-12">
               <div class="mb-3">
-                <label for="title">Client Name:</label>
+                <label for="name">Name:</label>
                 <input class="form-control @error('name') is-invalid @enderror" id="name" name="name" type="text"
-                  placeholder="Product Name" value="{{ old('name',$client->name ) }}">
+                  placeholder="Partner Title" value="{{ old('name') }}">
                 @error('name')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
                 @enderror
               </div>
-              <input type="text" name="oldImg" id="oldImg" value="{{ $client->img }}" hidden>
+
               <div class="mb-3">
-                <label for="formFile" class="form-label">Default file input example</label>
+                <label for="formFile" class="form-label">input image partner</label>
                 <input class="form-control" type="file" id="formFile" name="img">
               </div>
             </div>
 
+
+
+            {{-- <input type="file" name="img" id="img"> --}}
             <div class="btn-showcase text-end">
-              <button class="btn btn-primary" type="submit">Update</button>
+              <button class="btn btn-primary" type="submit">Create</button>
               <a href="/dashboard/home" class="btn btn-outline-secondary">Cancel</a>
             </div>
           </form>

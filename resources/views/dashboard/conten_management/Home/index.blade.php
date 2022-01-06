@@ -200,7 +200,7 @@
           {{-- End Quotes Menu --}}
 
 
-          {{-- Tab Product Menu --}}
+          {{-- Tab Client Menu --}}
           <div class="tab-pane fade" id="client" role="tabpanel" aria-labelledby="pills-clrcontact-tab1">
             <div class="row mb-4">
               <div class="col">
@@ -211,7 +211,7 @@
             </div>
             <div class="row">
               <div class="table-responsive product-table">
-                <table class="display" id="table-product">
+                <table class="display" id="table-client">
                   <thead>
                     <tr>
                       <th>Image</th>
@@ -242,10 +242,6 @@
                             onclick="return confirm('Are you sure delete?')">Delete</button>
                         </form>
                         @endcan
-                        {{-- <button class="btn btn-danger btn-xs" type="button"
-                          data-original-title="btn btn-danger btn-xs" title="">Delete</button>
-                        <button class="btn btn-success btn-xs" type="button" data-original-title="btn btn-danger btn-xs"
-                          title="">Edit</button> --}}
                       </td>
                     </tr>
                     @endforeach
@@ -254,7 +250,59 @@
               </div>
             </div>
           </div>
-          {{-- End Product Menu --}}
+          {{-- End Client Menu --}}
+
+
+          {{-- Tab Partners Menu --}}
+          <div class="tab-pane fade" id="partner" role="tabpanel" aria-labelledby="pills-clrcontact-tab1">
+            <div class="row mb-4">
+              <div class="col">
+                @can('create', \App\Models\Partner::class)
+                <a class="btn btn-primary" href="/dashboard/home/partner/create">Add New Partner</a>
+                @endcan
+              </div>
+            </div>
+            <div class="row">
+              <div class="table-responsive product-table">
+                <table class="display" id="table-partner">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($partner as $p)
+                    <tr>
+                      <td>
+                        <img src="{{ url( $p->img )}}" alt="" height="50px" class="img-fluid">
+                      </td>
+                      <td>
+                        <h6> {{ $p->name }} </h6>
+                      </td>
+                      <td>
+                        @can('update', \App\Models\Partner::class)
+                        <a class="btn btn-success" href="/dashboard/home/partner/{{ $p->id }}/edit">Edit</a>
+                        @endcan
+
+                        @can('delete', \App\Models\Partner::class)
+                        <form action="/dashboard/home/partner/{{ $p->id }}" method="post" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button class="btn btn-danger"
+                            onclick="return confirm('Are you sure delete?')">Delete</button>
+                        </form>
+                        @endcan
+                      </td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          {{-- End Partners Menu --}}
 
 
 
@@ -485,7 +533,8 @@
 <script>
   $(document).ready(function() {
     $('#basic-1').DataTable();
-    $('#table-product').DataTable();
+    $('#table-client').DataTable();
+    $('#table-partner').DataTable();
   });
 </script>
 @endsection

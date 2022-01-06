@@ -19,6 +19,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Product' => 'App\Policies\ContentManagementPolicy',
         'App\Models\Slideshow' => 'App\Policies\ContentManagementPolicy',
         'App\Models\Profile' => 'App\Policies\ContentManagementPolicy',
+        'App\Models\Client' => 'App\Policies\ContentManagementPolicy',
+        'App\Models\Partner' => 'App\Policies\ContentManagementPolicy',
     ];
 
     /**

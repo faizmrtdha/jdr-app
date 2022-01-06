@@ -47,7 +47,7 @@
               {{-- <input type="file" name="img" id="img"> --}}
               <div class="btn-showcase text-end">
                 <button class="btn btn-primary" type="submit">Create</button>
-                <a href="/dashboard/profile" class="btn btn-outline-secondary">Cancel</a>
+                <a href="/dashboard/home" class="btn btn-outline-secondary">Cancel</a>
               </div>
             </form>
           </div>
