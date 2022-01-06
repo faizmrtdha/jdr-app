@@ -9,7 +9,7 @@
           <h5>Client Profile Create</h5>
         </div>
         <div class="card-body add-post">
-          <form action="/dashboard/home/slideshow" method="post" class="row needs-validation"
+          <form action="/dashboard/home/client" method="post" class="row needs-validation"
             enctype="multipart/form-data">
             @csrf
             <div class="col-sm-12">
@@ -44,7 +44,7 @@
             {{-- <input type="file" name="img" id="img"> --}}
             <div class="btn-showcase text-end">
               <button class="btn btn-primary" type="submit">Create</button>
-              <a href="/dashboard/profile" class="btn btn-outline-secondary">Cancel</a>
+              <a href="/dashboard/home" class="btn btn-outline-secondary">Cancel</a>
             </div>
           </form>
         </div>

@@ -90,6 +90,7 @@
         </div>
       </div>
       <div id="featured-product" class="owl-carousel owl-theme tcards m-t-40">
+        {{-- @dd($clients) --}}
         @foreach ($clients as $c)
         <div class="item py-4">
           <div class="product-item card lift-up shadow-sm hover:shadow-lg property-box">
